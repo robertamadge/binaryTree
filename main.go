@@ -22,7 +22,7 @@ func (n Node) String() string {
 	return strconv.Itoa(n.Value)
 }
 
-//Searching a BinanySearchTree e convertendo para string
+//Searching a BinanySearchTree e convertendo para string, se não vai aparecer o valor na memoria
 func (b BinarySearchTree) String() string {
 	//sb = string builder, qualquer mudança que eu fizer ela reflete de volta no sb
 	sb := strings.Builder{}
@@ -31,12 +31,11 @@ func (b BinarySearchTree) String() string {
 	return sb.String()
 }
 
-//Wrapper
 func (b BinarySearchTree) inAscendOrder(sb *strings.Builder) {
 	b.inAscendOrderByNode(sb, b.Root)
 }
 
-//Onde acontece a search pela arvore e monta na ordem ascendente, inorder method
+//Onde acontece a search pela arvore e monta na ordem crescente
 func (b BinarySearchTree) inAscendOrderByNode(sb *strings.Builder, root *Node) {
 	//Se for nil ja estamos no final da arvore
 	if root == nil {
@@ -70,7 +69,7 @@ func (b *BinarySearchTree) addByNode(root *Node, value int) *Node {
 	return root
 }
 
-//Search por um numero especifico, não é point pq nao quero modificar
+//Search por um numero especifico, preorder
 func (b BinarySearchTree) Search(value int) (*Node, bool) {
 	return b.SearchByNode(b.Root, value)
 }
@@ -90,8 +89,7 @@ func (b BinarySearchTree) SearchByNode(root *Node, value int) (*Node, bool) {
 	}
 }
 
-//Remove, primeiro eu procuro o valor e tenho que
-//substituir e deleto ele para mudar a ordem
+//Remove, primeiro eu procuro o valor, substituo  e deleto ele de onde ele estava antes
 func (b *BinarySearchTree) Remove(value int) {
 	b.RemoveByNode(b.Root, value)
 }
@@ -130,7 +128,7 @@ func main() {
 	n.Left = &Node{2, nil, nil}
 	n.Right = &Node{4, nil, nil}
 
-	//Testanto search em ordem ascendente
+	//Testanto search em ordem crescente
 	bst := BinarySearchTree{
 		Root: n,
 		Len:  1,
