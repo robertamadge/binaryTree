@@ -36,7 +36,7 @@ func (b BinarySearchTree) inAscendOrder(sb *strings.Builder) {
 	b.inAscendOrderByNode(sb, b.Root)
 }
 
-//Onde acontece a search pela arvore e monta na ordem ascendente
+//Onde acontece a search pela arvore e monta na ordem ascendente, inorder method
 func (b BinarySearchTree) inAscendOrderByNode(sb *strings.Builder, root *Node) {
 	//Se for nil ja estamos no final da arvore
 	if root == nil {
